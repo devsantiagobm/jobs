@@ -1,0 +1,10 @@
+@use "../header/header" as *;
+@use "../jobs/jobs" as *;
+
+@media screen and (max-width: 872px){
+    html{
+        font-size: 18px
+    }
+    @include jobs-872px();
+    @include header-872px();
+}

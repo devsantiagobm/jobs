@@ -1,0 +1,197 @@
+@use '../assets/assets' as *;
+
+
+.jobs {
+    width: 100%;
+    min-height: 80vh;
+    padding: 10vh 10% 15vh;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    &.jobs--active &__work {
+        animation: fade-in 1s ease both;
+    }
+
+    &__work {
+        width: 100%;
+        display: flex;
+        justify-content: flex-start;
+        background-color: #fff;
+        align-items: center;
+        padding: 24px;
+        box-shadow: 0px 30px 60px -40px rgba(91, 164, 164, 1);
+        border-radius: 2px;
+        overflow: hidden;
+    }
+
+    &__work--hidden {
+        display: none;
+    }
+
+}
+
+.data {
+    width: 50%;
+    user-select: none;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    &__picture {
+        max-width: 60px;
+    }
+
+    &__information {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    &__company {
+        display: flex;
+        gap: 6px;
+        color: $light-cyan-filter;
+        text-transform: uppercase;
+        align-items: center;
+        font-size: .7rem;
+    }
+
+    &__company-name {
+        text-transform: capitalize;
+        color: $dark-cyan-background;
+    }
+
+    &__new {
+        background-color: $dark-cyan-background;
+    }
+
+    &__featured {
+        background-color: $very-dark-cyan;
+    }
+
+    &__new,
+    &__featured {
+        padding: 8px;
+        display: grid;
+        place-items: center;
+        border-radius: 16px;
+        line-height: 0rem;
+        font-size: .5rem;
+    }
+
+    &__job-name {
+        font-weight: 700;
+        margin: 6px 0 4px;
+    }
+
+
+    &__list {
+        --gap: 16px;
+        display: flex;
+        gap: var(--gap);
+        font-size: .7rem;
+        color: $dark-cyan;
+        text-transform: capitalize;
+    }
+
+    &__item {
+        position: relative;
+    }
+
+    &__item:first-child::before,
+    &__item:nth-child(2)::before {
+        content: "";
+        position: absolute;
+        width: 3px;
+        height: auto;
+        aspect-ratio: 1;
+        background-color: $dark-cyan;
+        border-radius: 50%;
+        top: 50%;
+        transform: translateY(-50%);
+        right: calc(var(--gap) / 2 * -1);
+    }
+
+
+}
+
+.filters {
+    width: 50%;
+
+    &__list {
+        display: flex;
+        gap: 12px;
+        justify-content: flex-end;
+        font-size: .7rem;
+        color: $dark-cyan-background;
+        font-weight: 700;
+    }
+
+    &__item {
+        background-color: rgba(91, 164, 164, .2);
+        padding: 4px 8px;
+        border-radius: 2px;
+        cursor: pointer;
+        transition: background-color .2s ease, color .2s ease;
+        user-select: none;
+
+        @media (hover:hover) {
+
+            &:hover {
+                background-color: $dark-cyan-background;
+                color: $light-cyan;
+            }
+
+        }
+
+    }
+
+}
+
+@mixin jobs-872px() {
+
+    .jobs {
+        &__work {
+            flex-direction: column;
+            gap: 24px;
+
+        }
+
+
+    }
+
+    .data {
+        width: 100%;
+        flex-direction: column;
+        align-items: flex-start;
+        position: relative;
+
+        &::before {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 1px;
+            background-color: $dark-cyan;
+            bottom: -12px;
+        }
+
+        &__job-name {
+            font-size: 1rem;
+        }
+    }
+
+    .filters {
+        width: 100%;
+
+        &__list {
+            justify-content: flex-start;
+            flex-wrap: wrap;
+        }
+
+
+        &__item {
+            max-width: 100px;
+        }
+    }
+}
